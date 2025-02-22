@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, Container, Typography, Grid, Button, Paper } from "@mui/material";
+import { Box, Container, Typography, Button, Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { Zoom, Fade } from "@mui/material";
+import { Zoom, Fade, Slide } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -52,45 +52,42 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     padding: "24px",
     borderRadius: "20px",
-  },
-  gridItem: {
-    padding: "16px",
+    background: "linear-gradient(145deg, #ffffff, #f0f0f0)",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+    "&:hover": {
+      transform: "translateY(-5px)",
+      boxShadow: "0 15px 35px rgba(0, 0, 0, 0.2)",
+    },
   },
   button: {
     marginTop: "16px",
     fontWeight: "600",
     textTransform: "none",
     padding: "10px 20px",
-    backgroundColor: "#333",
+    backgroundColor: "#1976d2",
     color: "#fff",
     "&:hover": {
-      backgroundColor: "#555",
+      backgroundColor: "#1565c0",
     },
     borderRadius: "30px",
   },
   about: {
-    backgroundColor: "#d8f5d8", // light green
-    color: "#333",
+    background: "linear-gradient(145deg, #d8f5d8, #c8e6c9)", // Light green gradient
   },
   why: {
-    backgroundColor: "#d0ebff", // light blue
-    color: "#333",
+    background: "linear-gradient(145deg, #d0ebff, #bbdefb)", // Light blue gradient
   },
   nature: {
-    backgroundColor: "#fff3e0", // light orange
-    color: "#333",
+    background: "linear-gradient(145deg, #fff3e0, #ffe0b2)", // Light orange gradient
   },
   schedule: {
-    backgroundColor: "#e8eaf6", // light purple
-    color: "#333",
+    background: "linear-gradient(145deg, #e8eaf6, #c5cae9)", // Light purple gradient
   },
   practices: {
-    backgroundColor: "#ffebee", // light pink
-    color: "#333",
+    background: "linear-gradient(145deg, #ffebee, #ffcdd2)", // Light pink gradient
   },
   costs: {
-    backgroundColor: "#e0f7fa", // light cyan
-    color: "#333",
+    background: "linear-gradient(145deg, #e0f7fa, #b2ebf2)", // Light cyan gradient
   },
 }));
 
@@ -101,11 +98,15 @@ function Home() {
   return (
     <Container className={classes.container}>
       <Zoom in={true} style={{ transitionDelay: "200ms" }}>
-        <Box
-          component="img"
-          src="/static/images/everest-banner.jpg"
-          alt="Mount Everest"
-          className={classes.banner}
+        <img 
+          src="/static/images/everest-banner.png" 
+          alt="Himalayan Peaks Yoga" 
+          style={{ 
+            width: "100%", 
+            height: "400px", 
+            objectFit: "cover",
+            objectPosition: "top"
+          }}
         />
       </Zoom>
       <Fade in={true} style={{ transitionDelay: "400ms" }}>
@@ -115,114 +116,98 @@ function Home() {
       </Fade>
       <Fade in={true} style={{ transitionDelay: "600ms" }}>
         <Typography variant="body1" className={classes.description}>
-          Your journey to wellness starts here.
+          Your journey to explore Health, Happiness, and Harmony starts here.
         </Typography>
       </Fade>
 
-      <Paper className={`${classes.section} ${classes.about}`} elevation={3}>
-        <Typography variant="h4" className={classes.subheading}>
-          About Kathmandu Yoga
-        </Typography>
-        <Typography variant="body1" className={classes.description}>
-          Kathmandu Yoga is a registered yoga institution with the Government of
-          Nepal. It deals with the various dimensions of the needs and interests
-          of its aspirants. It follows the systems of teaching founded by
-          Paramahamsa Satyananda Saraswati, the Founder of Satyananda Yoga or
-          Bihar Yoga.
-        </Typography>
-      </Paper>
+      <Slide in={true} direction="up" timeout={800}>
+        <Paper className={`${classes.section} ${classes.about}`} elevation={3}>
+          <Typography variant="h4" className={classes.subheading}>
+            Kathmandu Yoga
+          </Typography>
+          <Typography variant="body1" className={classes.description}>
+            Kathmandu Yoga is a registered yoga institution with the Government of Nepal. We are dedicated to sharing the transformative power of yoga, following the teachings of Paramahamsa Satyananda Saraswati, the founder of Satyananda Yoga and Bihar Yoga. Our teachings are based on the Yoga Chakra (Wheel of Yoga) concept, which integrates physical, mental, and spiritual practices for holistic well-being.
+          </Typography>
+        </Paper>
+      </Slide>
 
-      <Paper className={`${classes.section} ${classes.why}`} elevation={3}>
-        <Typography variant="h4" className={classes.subheading}>
-          Why Kathmandu Yoga?
-        </Typography>
-        <Typography variant="body1" className={classes.description}>
-          • Thousands of aspirants from more than 42 countries and 5 continents
-          have been inspired. <br />
-          • The founder instructor (Shiva Basyal) holds a Master’s Degree in
-          Yoga Psychology in First Class from the first Yoga University in the
-          world (Bihar Yoga Bharati at Bihar School of Yoga, Munger, India).{" "}
-          <br />
-          • He has been a dedicated practitioner and teacher of Yoga for the
-          last 26 years. <br />
-          • He is the first registered and certified yoga master in Nepal. <br />
-          • Kathmandu Yoga is a registered yoga school. <br />
-          • Kathmandu Yoga gives more emphasis to your personal need and
-          interest. <br />
-          • Syllabus is based upon classical (original) scriptures. <br />
-          • Kathmandu Yoga provides customized and one-on-one and group
-          tutorials based on Yoga Chakra concept. <br />
-          • Please note that we are NOT just for physical fitness but deal with
-          the mind/body/spirit interplay which may make you experience Yoga
-          beyond just the physical body.
-        </Typography>
-      </Paper>
+      <Slide in={true} direction="up" timeout={1000}>
+        <Paper className={`${classes.section} ${classes.why}`} elevation={3}>
+          <Typography variant="h4" className={classes.subheading}>
+            Why Kathmandu Yoga?
+          </Typography>
+          <Typography variant="body1" className={classes.description}>
+            • Thousands of aspirants from over 42 countries and 5 continents have been inspired by our teachings. <br />
+            • Our founder, Sannyasi Premananda (Shiva Basyal), holds a Master's Degree in Yoga Psychology with First Class honors from Bihar Yoga Bharati, the first yoga university in the world. <br />
+            • With over 26 years of dedicated practice and teaching, he is Nepal's first registered and certified yoga master. <br />
+            • Our syllabus is rooted in classical scriptures, ensuring an authentic and transformative yoga experience. <br />
+            • We offer personalized, one-on-one, and group sessions tailored to your needs and interests. <br />
+            • Our approach goes beyond physical fitness, focusing on the mind-body-spirit connection to help you experience yoga in its fullest form.
+          </Typography>
+        </Paper>
+      </Slide>
 
-      <Paper className={`${classes.section} ${classes.nature}`} elevation={3}>
-        <Typography variant="h4" className={classes.subheading}>
-          Nature of the Class
-        </Typography>
-        <Typography variant="body1" className={classes.description}>
-          The practical session is completely guided with instructions. During
-          the practices more emphasis is given on intensifying the
-          feelings/experience of the particular practice on physical, mental and
-          spiritual aspects with higher awareness. Personalized, customized and
-          one-on-one tutorials are also provided. We focus on one-on-one
-          sessions, but if you would like to come in a group (like friends,
-          family, spouse or children) you are most welcome.
-        </Typography>
-      </Paper>
+      <Slide in={true} direction="up" timeout={1200}>
+        <Paper className={`${classes.section} ${classes.nature}`} elevation={3}>
+          <Typography variant="h4" className={classes.subheading}>
+            Nature of Classes
+          </Typography>
+          <Typography variant="body1" className={classes.description}>
+            Our classes are fully guided, with a focus on deepening your awareness of each practice. Whether you prefer one-on-one sessions or group classes with friends or family, we cater to your needs. Online classes are also available for those who cannot attend in person.
+          </Typography>
+        </Paper>
+      </Slide>
 
-      <Paper className={`${classes.section} ${classes.schedule}`} elevation={3}>
-        <Typography variant="h4" className={classes.subheading}>
-          Time Schedule
-        </Typography>
-        <Typography variant="body1" className={classes.description}>
-          Schedules are flexible. Classes can be arranged at any time on any day
-          depending upon your and our conveniences. All appointments are
-          required to be made in advance.
-        </Typography>
-      </Paper>
+      <Slide in={true} direction="up" timeout={1400}>
+        <Paper className={`${classes.section} ${classes.schedule}`} elevation={3}>
+          <Typography variant="h4" className={classes.subheading}>
+            Time Schedule
+          </Typography>
+          <Typography variant="body1" className={classes.description}>
+            We offer flexible schedules to accommodate your lifestyle. Classes can be arranged at any time, depending on your and our availability. All appointments must be made in advance.
+          </Typography>
+        </Paper>
+      </Slide>
 
-      <Paper className={`${classes.section} ${classes.practices}`} elevation={3}>
-        <Typography variant="h4" className={classes.subheading}>
-          Synopsis of the Practices
-        </Typography>
-        <Typography variant="body1" className={classes.description}>
-          A practical session generally covers Asanas (Body Postures),
-          Pranayamas (Scientific Techniques of Conscious Breathing), Mudras
-          (psychic gestures), Bandhas (psychic locks), some Shatkarmas (yogic
-          cleansing), Yoga Nidra/Relaxation (psychic sleep) Dharana
-          (Concentration) followed by Guided Meditation. The theory of the
-          practices is well explained.
-        </Typography>
-      </Paper>
+      <Slide in={true} direction="up" timeout={1600}>
+        <Paper className={`${classes.section} ${classes.practices}`} elevation={3}>
+          <Typography variant="h4" className={classes.subheading}>
+            Synopsis of Practices
+          </Typography>
+          <Typography variant="body1" className={classes.description}>
+            Our sessions include a blend of Asanas (Body Postures), Pranayamas (Breathing Techniques), Mudras (Psychic Gestures), Bandhas (Energy Locks), Shatkarmas (Cleansing Practices), Yoga Nidra (Deep Relaxation), and Guided Meditation. Each practice is explained in detail to help you understand its benefits and purpose.
+          </Typography>
+        </Paper>
+      </Slide>
 
-      <Paper className={`${classes.section} ${classes.costs}`} elevation={3}>
-        <Typography variant="h4" className={classes.subheading}>
-          Costs
-        </Typography>
-        <Typography variant="body1" className={classes.description}>
-          Costs vary according to the package. Please contact us for more
-          information.
-        </Typography>
-      </Paper>
+      <Slide in={true} direction="up" timeout={1800}>
+        <Paper className={`${classes.section} ${classes.costs}`} elevation={3}>
+          <Typography variant="h4" className={classes.subheading}>
+            Costs
+          </Typography>
+          <Typography variant="body1" className={classes.description}>
+            Our pricing varies depending on the package you choose. Contact us for more details and to find a plan that suits your needs.
+          </Typography>
+        </Paper>
+      </Slide>
 
-      <div className={classes.section}>
-        <Typography variant="h4" className={classes.subheading}>
-          Ready to Begin?
-        </Typography>
-        <Typography variant="body1" className={classes.description}>
-          Explore the path to wellness with Kathmandu Yoga.
-        </Typography>
-        <Button
-          variant="contained"
-          className={classes.button}
-          onClick={() => navigate("/contact")}
-        >
-          Contact Us
-        </Button>
-      </div>
+      <Slide in={true} direction="up" timeout={2000}>
+        <div className={classes.section}>
+          <Typography variant="h4" className={classes.subheading}>
+            Ready to Begin?
+          </Typography>
+          <Typography variant="body1" className={classes.description}>
+            Start your journey to wellness with Kathmandu Yoga. Contact us today to book your first session!
+          </Typography>
+          <Button
+            variant="contained"
+            className={classes.button}
+            onClick={() => navigate("/contact")}
+          >
+            Contact Us
+          </Button>
+        </div>
+      </Slide>
     </Container>
   );
 }

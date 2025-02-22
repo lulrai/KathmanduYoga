@@ -1,17 +1,19 @@
-import axios from 'axios';
+import axios from "axios";
 
-const api = axios.create({
-  baseURL: 'http://localhost:8000',
+const API = axios.create({
+  baseURL: "http://localhost:5000/api",
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-export const fetchCourses = async () => {
-  try {
-    const response = await api.get('/courses');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching courses:', error);
-    throw error;
+// Add request interceptor
+API.interceptors.request.use((config) => {
+  const token = localStorage.getItem("authToken");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
-};
+  return config;
+});
 
-// Add more API functions as needed
+export default API;

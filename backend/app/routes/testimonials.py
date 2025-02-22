@@ -16,4 +16,4 @@ def create_testimonial(testimonial: TestimonialCreate, db: Session = Depends(get
     db.add(db_testimonial)
     db.commit()
     db.refresh(db_testimonial)
-    return db_testimonial 
+    return db_testimonial

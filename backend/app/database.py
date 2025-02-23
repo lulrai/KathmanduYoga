@@ -16,6 +16,8 @@ engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
+SECRET_KEY = os.getenv("JWT_SECRET")
+
 def get_db():
     db = SessionLocal()
     try:

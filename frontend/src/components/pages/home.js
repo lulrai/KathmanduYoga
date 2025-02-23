@@ -110,7 +110,7 @@ function Home() {
         />
       </Zoom>
       <Fade in={true} style={{ transitionDelay: "400ms" }}>
-        <Typography variant="h2" className={classes.welcomeText}>
+        <Typography variant="h1" className={classes.welcomeText}>
           Welcome to Kathmandu Yoga
         </Typography>
       </Fade>

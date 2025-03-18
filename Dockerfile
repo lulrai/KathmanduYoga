@@ -1,5 +1,5 @@
 # Base image for building React frontend
-FROM node:20-alpine AS frontend-build
+FROM node:20-alpine AS builder
 
 # Set working directory and copy frontend files
 WORKDIR /app/frontend
@@ -9,6 +9,7 @@ COPY frontend /app/frontend
 
 # Build React application
 RUN npm run build
+RUN npm prune --production
 
 # Final stage to run both backend and frontend servers
 FROM python:3.11.9-alpine3.20
@@ -28,10 +29,7 @@ RUN pip install -U pdm
 RUN pdm install --prod --no-self
 
 # Copy frontend build output from the second stage
-COPY --from=frontend-build /app/frontend/build /app/frontend/build
-
-# Install the static file server
-RUN npm install -g serve
+COPY --from=builder /app/frontend /app/frontend
 
 # Start both backend and frontend servers
-CMD ["sh", "-c", "pdm run uvicorn main:app --host 0.0.0.0 --port 8000 & serve -s /app/frontend/build -l 8080"]
+CMD ["sh", "-c", "pdm run uvicorn main:app --host 0.0.0.0 --port 8000 & cd /app/frontend && npm run start -- -p 8080"]
